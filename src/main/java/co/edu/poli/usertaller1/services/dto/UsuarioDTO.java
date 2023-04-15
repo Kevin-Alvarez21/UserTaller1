@@ -10,13 +10,16 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
 @Data
 public class UsuarioDTO {
+    private Integer idUsuario;
     @Past
     private LocalDate fecha_nacimiento;
     private Boolean activo;
     private Dependencia dependencia;
-    private Perfil perfil;
+    private Set<Perfil> perfil;
     private List<Fila> fila;
 
     @AssertTrue(message = "El usuario debe tener al menos 18 años")

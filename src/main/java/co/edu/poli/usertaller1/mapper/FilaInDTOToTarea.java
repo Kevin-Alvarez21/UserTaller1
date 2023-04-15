@@ -12,6 +12,7 @@ public class FilaInDTOToTarea implements IMapper<FilaDTO, Fila>{
     public Fila mapper(FilaDTO in) {
         Fila fila = new Fila();
         fila.setDuracion(in.getDuracion());
+        fila.setUsuario(in.getUsuario());
         /*fila.setTarea(in.getTarea());*/
         return fila;
     }

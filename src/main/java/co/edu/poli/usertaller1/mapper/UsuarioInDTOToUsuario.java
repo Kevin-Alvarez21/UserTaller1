@@ -12,7 +12,7 @@ public class UsuarioInDTOToUsuario implements IMapper<UsuarioDTO, Usuario>{
         Usuario user = new Usuario();
         user.setFechaNacimiento(in.getFecha_nacimiento());
         user.setDependencia(in.getDependencia());
-        user.setPerfil(in.getPerfil());
+        user.setPerfiles(in.getPerfil());
         user.setActivo(false);
         user.setFilas(in.getFila());
         return user;

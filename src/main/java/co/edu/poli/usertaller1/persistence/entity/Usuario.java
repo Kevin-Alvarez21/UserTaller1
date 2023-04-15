@@ -7,9 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Setter
@@ -24,13 +22,20 @@ public class Usuario {
     private LocalDate fechaNacimiento;
     @Column(name = "activo")
     private boolean activo;
+    @Enumerated(EnumType.STRING)
     @Column(name = "dependencia")
     private Dependencia dependencia;
-    private Perfil perfil;
+
+    @ElementCollection(targetClass = Perfil.class)
+    @CollectionTable(name = "usuario_perfil",
+            joinColumns = @JoinColumn(name = "id_usuario"))
+    @Column(name = "perfil", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Set<Perfil> perfiles = new HashSet<>();
 
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Fila> filas;
 
 

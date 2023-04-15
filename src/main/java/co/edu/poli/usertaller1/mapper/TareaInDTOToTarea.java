@@ -14,6 +14,7 @@ public class TareaInDTOToTarea implements IMapper<TareaDTO, Tarea>{
         Tarea task = new Tarea();
         task.setIdTarea(in.getIdTarea());
         task.setNombre(in.getNombre());
+        task.setFila(in.getFila());
         return task;
     }
 }

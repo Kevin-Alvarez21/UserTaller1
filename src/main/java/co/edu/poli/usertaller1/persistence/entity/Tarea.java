@@ -24,6 +24,11 @@ public class Tarea {
     @Column(name = "nombre")
     private String nombre;
 
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_fila")
+    private Fila fila;
+
 
     @Override
     public boolean equals(Object o) {

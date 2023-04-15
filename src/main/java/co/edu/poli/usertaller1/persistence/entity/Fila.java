@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +27,13 @@ public class Fila {
     @JoinColumn(name = "id_tarea")
     private Tarea tarea;*/
 
+    @JsonManagedReference
+    @OneToOne(mappedBy = "fila",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Tarea tarea;
+
     @Column(name = "duracion")
+    @Min(value = 1, message = "La duración debe ser mayor o igual a 1")
+    @Max(value = 60, message = "La duración debe ser menor o igual a 60")
     private Integer duracion;
 
     @JsonBackReference
