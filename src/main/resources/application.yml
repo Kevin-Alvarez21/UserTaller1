@@ -6,4 +6,4 @@ spring:
   application:
     name: app-courses
   profiles:
-    active: prod
+    active: dev
